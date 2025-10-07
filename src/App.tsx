@@ -22,6 +22,10 @@ const App = () => {
 
 	const [flippedCards, setFlippedCards] = useState<Tcard["name"][]>([])
 
+	const [moves, setMoves] = useState(0)
+
+	const [matches, setMatches] = useState(0)
+
 	const handleCardClick = (clickedCard: Tcard) => {
 		if(clickedCard.matched) return
 
@@ -37,30 +41,39 @@ const App = () => {
 
 	useEffect(()=>{
 		if(flippedCards.length === 2) {
+			setMoves((prev) => prev+1)
 			const [first, second] = flippedCards
 			if(first === second){
+				setMatches((prev) => prev+1)
 				console.log("match")
 				setFlippedCards([])
 
 				setGameCards((prev) => 
-				prev.map((card) =>
-				card.name === first ? {...card, matched: true}: card))
-			}
-		} else {
-			setTimeout(() => {
-				setGameCards((prev) => 
 					prev.map((card) =>
-						flippedCards.some((fc)=> fc === card.name)
-							? {...card, flipped: false} : card
-						))
+					card.name === first ? {...card, matched: true}: card))
+			} else {
+			setTimeout(()=>{
+				setGameCards((prev)=>
+				prev.map((card)=>
+					flippedCards.some((fc) => fc === card.name)
+					? { ...card, flipped: false }
+					: card
+				)
+				)
 				setFlippedCards([])
 			}, 1000)
+
 		}
-	}, [flippedCards])
+		}
+		if(matches == gameCards.length / 2){alert("You won")}
+		}, [flippedCards])
+
 
 	return (
 		<div className="main_section">
 			<h1>Memory Game</h1>
+			<p> Number of moves: {moves}</p>
+			<p> Number of matches: {matches}</p>
 			<div className="card_container">
 			{
 				gameCards.map(
