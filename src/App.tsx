@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import CardComp from "./components/CardComp"
 import cards from "./data/cards.json"
@@ -20,13 +20,34 @@ const App = () => {
 
 	const [gameCards, setGameCards] = useState<Tcards>(shuffleCards(createGameCards()))
 
+	const [flippedCards, setFlippedCards] = useState<Tcard["name"][]>([])
+
 	const handleCardClick = (clickedCard: Tcard) => {
+		if(clickedCard.matched) return
+
+		if(flippedCards.length === 2) return
+
 		setGameCards((prev) =>
 			prev.map((card) =>
 				card.id === clickedCard.id ? { ...card, flipped: !card.flipped} : card
 			)
 		)
+		setFlippedCards((prev) => [...prev, clickedCard["name"]])
 	}
+
+	useEffect(()=>{
+		if(flippedCards.length === 2) {
+			const [first, second] = flippedCards
+			if(first === second){
+				console.log("match")
+				setFlippedCards([])
+
+				setGameCards((prev) => 
+				prev.map((card) =>
+				card.name === first ? {...card, matched: true}: card))
+			}
+		}
+	}, [flippedCards])
 
 	return (
 		<div className="main_section">
