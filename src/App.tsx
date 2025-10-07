@@ -7,7 +7,16 @@ import type { Tcard, Tcards } from "./types/card.types"
 
 const App = () => {
 
-	const [gameCards, setGameCards] = useState<Tcards>(cards)
+	// Create pairs of cards
+	const createGameCards = (): Tcards => {
+		const pairs = cards.flatMap((card) => [
+			{ ...card, id: card.id },
+			{ ...card, id: card.id + 100 },
+		])
+		return pairs
+	}
+
+	const [gameCards, setGameCards] = useState<Tcards>(createGameCards())
 
 	const handleCardClick = (clickedCard: Tcard) => {
 		setGameCards((prev) =>
