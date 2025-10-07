@@ -1,19 +1,22 @@
-import styles from "./CardComp.module.css"
 import type { Tcard } from "../types/card.types"
+import styles from "./CardComp.module.css"
 
 export type TCardProps = {
-	clickProp: () => void
+	clickProp: (card: Tcard) => void
 	card: Tcard
 }
 
-const CardComp = ({clickProp, card}: TCardProps)=> {
+const CardComp = ({ clickProp, card }: TCardProps) => {
 	const handleClick = () => {
-		console.log("Card clicked", card)
-		clickProp()
+		console.log("clicked", card)
+		clickProp(card)
 	}
 
 	return (
-		<article onClick={handleClick} className={styles.card}>
+		<article
+			onClick={handleClick}
+			className={`${styles.card} ${card.flipped ? styles.animate__rotate : ""}`}
+		>
 			CardComp
 		</article>
 	)

@@ -8,6 +8,15 @@ import type { Tcard, Tcards } from "./types/card.types"
 const App = () => {
 
 	const [gameCards, setGameCards] = useState<Tcards>(cards)
+
+	const handleCardClick = (clickedCard: Tcard) => {
+		setGameCards((prev) =>
+			prev.map((card) =>
+				card.id === clickedCard.id ? { ...card, flipped: !card.flipped} : card
+			)
+		)
+	}
+
 	return (
 		<div className="main_section">
 			<h1>Memory Game</h1>
@@ -15,7 +24,7 @@ const App = () => {
 			{
 				gameCards.map(
 					(card: Tcard) => (
-						<CardComp clickProp={() => {}} card={card} key={card.id}/>
+						<CardComp clickProp={handleCardClick} card={card} key={card.id}/>
 					)
 				)
 			}
