@@ -17,7 +17,7 @@ const CardComp = ({ clickProp, card }: TCardProps) => {
 			onClick={handleClick}
 			className={`${styles.card} ${card.flipped ? styles.animate__rotate : ""}`}
 		>
-			CardComp
+			<img src={`./imgs/${card.image}`} alt={card.name}/>
 		</article>
 	)
 }

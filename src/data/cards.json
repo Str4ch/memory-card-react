@@ -1,43 +1,57 @@
 [
 	{
 		"id": 1,
-		"name": "Capitain America",
-		"image": "capitain.jpg",
+		"name": "ACE CLUBS",
+		"image": "AC.png",
 		"flipped": false,
 		"matched": false
 	},
 	{
 		"id": 2,
-		"name": "Deadpool",
-		"image": "deadpool.jpg",
+		"name": "ACE DIAMONDS",
+		"image": "AD.png",
 		"flipped": false,
 		"matched": false
 	},
 	{
 		"id": 3,
-		"name": "Iron Man",
-		"image": "ironman.jpg",
+		"name": "ACE HEARTS",
+		"image": "AH.png",
 		"flipped": false,
 		"matched": false
 	},
 	{
 		"id": 4,
-		"name": "Spiderman",
-		"image": "spider.jpg",
+		"name": "ACE SPADES",
+		"image": "AS.png",
 		"flipped": false,
 		"matched": false
 	},
 	{
 		"id": 5,
-		"name": "Superman",
-		"image": "superman.jpg",
+		"name": "KING CLUBS",
+		"image": "KC.png",
 		"flipped": false,
 		"matched": false
 	},
 	{
 		"id": 6,
-		"name": "Wolverine",
-		"image": "wolverine.jpg",
+		"name": "KING DIAMONDS",
+		"image": "KD.png",
+		"flipped": false,
+		"matched": false
+	},
+	{
+		"id": 7,
+		"name": "KING HEARTS",
+		"image": "KH.png",
+		"flipped": false,
+		"matched": false
+	},
+	{
+		"id": 8,
+		"name": "KING SPADES",
+		"image": "KS.png",
 		"flipped": false,
 		"matched": false
 	}
