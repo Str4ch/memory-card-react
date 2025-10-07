@@ -1,5 +1,4 @@
 .card {
-    max-width: 240px;
     aspect-ratio: 9/13;
     background-color: var(--primary);
     border: 1px solid var(--primary-alt);
