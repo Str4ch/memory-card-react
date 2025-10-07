@@ -46,6 +46,15 @@ const App = () => {
 				prev.map((card) =>
 				card.name === first ? {...card, matched: true}: card))
 			}
+		} else {
+			setTimeout(() => {
+				setGameCards((prev) => 
+					prev.map((card) =>
+						flippedCards.some((fc)=> fc === card.name)
+							? {...card, flipped: false} : card
+						))
+				setFlippedCards([])
+			}, 1000)
 		}
 	}, [flippedCards])
 
