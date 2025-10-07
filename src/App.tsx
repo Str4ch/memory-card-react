@@ -15,7 +15,7 @@ const App = () => {
 			{
 				gameCards.map(
 					(card: Tcard) => (
-						<CardComp card_id={card.id}/>
+						<CardComp clickProp={() => {}} card={card} key={card.id}/>
 					)
 				)
 			}

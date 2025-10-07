@@ -1,19 +1,20 @@
-import { useState, type JSX} from "react"
 import styles from "./CardComp.module.css"
+import type { Tcard } from "../types/card.types"
 
+export type TCardProps = {
+	clickProp: () => void
+	card: Tcard
+}
 
-function CardComp({ card_id }: { card_id: number }): JSX.Element {
-
-	const [style, setstyle] = useState(styles.card)
-
+const CardComp = ({clickProp, card}: TCardProps)=> {
 	const handleClick = () => {
-		console.log("Card clicked", card_id)
-		setstyle(styles.flipped)
+		console.log("Card clicked", card)
+		clickProp()
 	}
 
 	return (
-		<article onClick={handleClick} className={style}>
-			
+		<article onClick={handleClick} className={styles.card}>
+			CardComp
 		</article>
 	)
 }
