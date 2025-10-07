@@ -6,8 +6,6 @@ import cards from "./data/cards.json"
 import type { Tcard, Tcards } from "./types/card.types"
 
 const App = () => {
-
-	// Create pairs of cards
 	const createGameCards = (): Tcards => {
 		const pairs = cards.flatMap((card) => [
 			{ ...card, id: card.id },
@@ -16,7 +14,11 @@ const App = () => {
 		return pairs
 	}
 
-	const [gameCards, setGameCards] = useState<Tcards>(createGameCards())
+	const shuffleCards = (cards: Tcards): Tcards =>{
+		return cards.sort(()=>Math.random() - 0.5)
+	}
+
+	const [gameCards, setGameCards] = useState<Tcards>(shuffleCards(createGameCards()))
 
 	const handleCardClick = (clickedCard: Tcard) => {
 		setGameCards((prev) =>
